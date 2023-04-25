@@ -14,11 +14,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ValueController {
 
+    // 纯量
     @Value("${name}")
     private String userName;
 
+    // 对象 map
+    @Value("${person.id}")
+    private String userId;
+
+    // 数组 array
+    @Value("${fruits[0]}")
+    private String fruit;
+
     @RequestMapping("/helloName")
     public String hello() {
-        return "Hello " + userName + ", welcome to SpringBoot!";
+        return "Hello " + userName + "(" + userId + "), do you like eating " + fruit + "?";
     }
 }

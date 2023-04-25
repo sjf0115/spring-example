@@ -1,0 +1,10 @@
+server:
+  port: 8082
+
+person:
+  id: 001
+  name: lily
+
+fruits:
+  - banana
+  - apple
