@@ -4,6 +4,9 @@ server:
 person:
   id: 001
   name: lily
+  sports:
+    - football
+    - basketball
 
 fruits:
   - banana
