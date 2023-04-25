@@ -26,7 +26,7 @@ public class ValueController {
     @Value("${fruits[0]}")
     private String fruit;
 
-    @RequestMapping("/helloName")
+    @RequestMapping("/hello2")
     public String hello() {
         return "Hello " + userName + "(" + userId + "), do you like eating " + fruit + "?";
     }
