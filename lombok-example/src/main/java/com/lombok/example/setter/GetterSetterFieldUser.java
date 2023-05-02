@@ -12,9 +12,7 @@ import lombok.Setter;
  * 日期：2023/5/1 下午10:36
  */
 public class GetterSetterFieldUser {
-    @Setter
-    @Getter
-    private Long id;
+    @Setter @Getter private Long id;
     @Setter(AccessLevel.PROTECTED)
     @Getter(AccessLevel.PRIVATE)
     private String name;
