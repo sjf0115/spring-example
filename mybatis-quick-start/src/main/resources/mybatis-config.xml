@@ -3,11 +3,6 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-
-    <typeAliases>
-        <package name="com.mybatis.example"/>
-    </typeAliases>
-    
     <!-- environments：配置数据库连接环境信息 可以配置多个 environment，通过 default 属性切换不同的 environment -->
     <environments default="prod">
         <environment id="prod">
@@ -34,10 +29,6 @@
     </environments>
 
     <mappers>
-        <!-- 方式1：加载 SQL 映射文件 -->
-        <!-- <mapper resource="com/mybatis/example/mapper/UserMapper.xml"/>-->
-
-        <!-- 方式2：Mapper 代理方式 -->
-        <package name="com.mybatis.example.mapper"/>
+         <mapper resource="UserMapper.xml"/>
     </mappers>
 </configuration>
