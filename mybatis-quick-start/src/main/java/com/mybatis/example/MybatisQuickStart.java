@@ -1,5 +1,6 @@
 package com.mybatis.example;
 
+import com.mybatis.example.mapper.UserMapper;
 import com.mybatis.example.pojo.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -26,6 +27,7 @@ public class MybatisQuickStart {
 
         SqlSession session = sqlSessionFactory.openSession();
 
+        // 1. 第一种方式 指定 SQL 语句的唯一标识
         // 查询所有的用户
             // 参数是 SQL 语句的唯一标识 Mapper.xml 文件中定义
         List<User> users = session.selectList("com.mybatis.example.UserMapper.selectAll");
@@ -36,5 +38,17 @@ public class MybatisQuickStart {
         // 根据指定的ID查询用户
         User user = session.selectOne("com.mybatis.example.UserMapper.selectById", 1);
         System.out.println("目标用户: " + user);
+
+        // 2. 第二种方式 指定 UserMapper 接口
+        // 查询所有的用户
+        UserMapper mapper = session.getMapper(UserMapper.class);
+        List<User> users2 = mapper.selectAll();
+        for (User user2 : users2) {
+            System.out.println("全部用户: " + user2);
+        }
+
+        // 根据指定的ID查询用户
+        User user2 = mapper.selectById(1);
+        System.out.println("目标用户: " + user2);
     }
 }
