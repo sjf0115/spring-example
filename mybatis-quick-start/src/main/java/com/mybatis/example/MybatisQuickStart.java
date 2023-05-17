@@ -27,7 +27,7 @@ public class MybatisQuickStart {
 
         SqlSession session = sqlSessionFactory.openSession();
 
-        // 1. 第一种方式 指定 SQL 语句的唯一标识
+        // 1. 第一种方式 指定 SQL 语句的唯一标识(全限定名称)
         // 查询所有的用户
             // 参数是 SQL 语句的唯一标识 Mapper.xml 文件中定义
         List<User> users = session.selectList("com.mybatis.example.UserMapper.selectAll");
@@ -50,5 +50,8 @@ public class MybatisQuickStart {
         // 根据指定的ID查询用户
         User user2 = mapper.selectById(1);
         System.out.println("目标用户: " + user2);
+
+        // 释放资源
+        session.close();
     }
 }
