@@ -12,13 +12,13 @@ import java.io.InputStream;
 import java.util.List;
 
 /**
- * 功能：入口
+ * 功能：入口 基于 Mapper 代理开发
  * 作者：SmartSi
  * CSDN博客：https://smartsi.blog.csdn.net/
  * 公众号：大数据生态
  * 日期：2023/5/16 下午11:40
  */
-public class MybatisQuickStart {
+public class MybatisQuickStartMapper {
     public static void main(String[] args) throws IOException {
         // 加载 Mybatis 的核心配置文件 mybatis-config.xml
         String resource = "mybatis-config.xml";
@@ -27,16 +27,16 @@ public class MybatisQuickStart {
 
         SqlSession session = sqlSessionFactory.openSession();
 
-        // 1. 第一种方式 指定 SQL 语句的唯一标识(全限定名称)
+        // Mapper 代理 指定 UserMapper 接口
         // 查询所有的用户
-            // 参数是 SQL 语句的唯一标识 Mapper.xml 文件中定义
-        List<User> users = session.selectList("com.mybatis.example.mapper.UserMapper.selectAll");
+        UserMapper mapper = session.getMapper(UserMapper.class);
+        List<User> users = mapper.selectAll();
         for (User user : users) {
             System.out.println("全部用户: " + user);
         }
 
         // 根据指定的ID查询用户
-        User user = session.selectOne("com.mybatis.example.mapper.UserMapper.selectById", 1);
+        User user = mapper.selectById(1);
         System.out.println("目标用户: " + user);
 
         // 释放资源

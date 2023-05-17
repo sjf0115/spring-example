@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- namespace 命名空间 -->
-<mapper namespace="com.mybatis.example.UserMapper">
+<mapper namespace="com.mybatis.example.mapper.UserMapper">
     <!-- 查询所有的用户 -->
     <select id="selectAll" resultType="com.mybatis.example.pojo.User">
         select * from tb_user;
