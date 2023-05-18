@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace 命名空间 -->
+<mapper namespace="com.mybatis.example.mapper.StudentMapper">
+
+    <!-- 1. 查询 -->
+
+    <!--
+        数据库字段与实体类属性不一致时导致数据不能自动封装
+        (1) 对不一致的列名起别名，与实体类保持一致
+        (2) ResultMap 进行映射
+    -->
+
+    <!-- 1.1 查询所有的用户 别名 -->
+    <select id="selectAll" parameterType = "int" resultType="com.mybatis.example.pojo.Student">
+        select id, stu_id AS stuId, stu_name AS stuName, status
+        from tb_student;
+    </select>
+
+    <!-- 1.2 根据指定的 Id 查询用户 ResultMap 进行映射 -->
+    <resultMap id="studentResultMap" type="com.mybatis.example.pojo.Student">
+        <result column="stu_id" property="stuId"/>
+        <result column="stu_name" property="stuName"/>
+    </resultMap>
+
+    <select id="selectById" parameterType = "int" resultMap="studentResultMap">
+        select * from tb_student where stu_id = #{stu_id};
+    </select>
+
+    <!-- 2. 插入 -->
+    <insert id="addStudent" useGeneratedKeys="true" keyProperty="id">
+        insert into tb_student (stu_id, stu_name, status)
+        values (#{stuId}, #{stuName}, #{status});
+
+    </insert>
+</mapper>
