@@ -23,4 +23,8 @@ public interface StudentMapper {
     void addStudents(List<Student> students);
     // 更新
     int updateStudent(Student stu);
+    // 删除指定学生
+    int deleteStudentById(int id);
+    // 批量删除学生
+    int deleteStudentByIds(@Param("ids") List<Integer> ids);
 }
