@@ -34,6 +34,8 @@
     <insert id="addStudent" useGeneratedKeys="true" keyProperty="id">
         insert into tb_student (stu_id, stu_name, status)
         values (#{stuId}, #{stuName}, #{status});
-
     </insert>
+
+
+
 </mapper>

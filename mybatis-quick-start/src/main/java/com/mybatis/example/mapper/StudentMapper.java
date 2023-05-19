@@ -14,6 +14,9 @@ import java.util.List;
  * 日期：2023/5/17 上午12:09
  */
 public interface StudentMapper {
+    // 查询
     List<Student> selectAll();
     Student selectById(@Param("stu_id") int id);
+    // 插入
+    void addStudent(Student stu);
 }

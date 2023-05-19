@@ -10,7 +10,7 @@
             <dataSource type="POOLED">
                 <!--数据库连接信息-->
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql:///test?useSSL=false"/>
+                <property name="url" value="jdbc:mysql:///test?useSSL=false&amp;characterEncoding=utf8"/>
                 <property name="username" value="root"/>
                 <property name="password" value="root"/>
             </dataSource>
@@ -21,7 +21,7 @@
             <dataSource type="POOLED">
                 <!--数据库连接信息-->
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql:///test?useSSL=false"/>
+                <property name="url" value="jdbc:mysql:///test?useSSL=false&amp;characterEncoding=utf8"/>
                 <property name="username" value="root"/>
                 <property name="password" value="root"/>
             </dataSource>

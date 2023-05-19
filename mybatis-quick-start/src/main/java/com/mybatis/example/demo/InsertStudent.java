@@ -25,14 +25,20 @@ public class InsertStudent {
         InputStream inputStream = Resources.getResourceAsStream(resource);
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 
-        SqlSession session = sqlSessionFactory.openSession();
+        // 获取 SqlSession 并开启自动事务提交
+        SqlSession session = sqlSessionFactory.openSession(true);
 
-        // 查询所有的学生
         StudentMapper mapper = session.getMapper(StudentMapper.class);
-        List<Student> students = mapper.selectAll();
-        for (Student stu : students) {
-            System.out.println("全部学生: " + stu);
-        }
+
+        // 插入一个学生
+        Student stu = new Student();
+        stu.setStuId(10002);
+        stu.setStuName("C罗");
+        stu.setStatus(1);
+        mapper.addStudent(stu);
+
+        // 如果没有开启自动事务提交需要在这手动提交事务
+        // session.commit();
 
         // 释放资源
         session.close();
