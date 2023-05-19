@@ -31,11 +31,19 @@
     </select>
 
     <!-- 2. 插入 -->
+
+    <!-- 2.1 单个插入 -->
     <insert id="addStudent" useGeneratedKeys="true" keyProperty="id">
         insert into tb_student (stu_id, stu_name, status)
         values (#{stuId}, #{stuName}, #{status});
     </insert>
 
-
+    <!-- 2.2 批量插入 -->
+    <insert id="addStudents" useGeneratedKeys="true" keyProperty="id">
+        insert into tb_student (stu_id, stu_name, status) values
+        <foreach item="students" collection="list" separator=",">
+            (#{students.stuId}, #{students.stuName}, #{students.status})
+        </foreach>
+    </insert>
 
 </mapper>

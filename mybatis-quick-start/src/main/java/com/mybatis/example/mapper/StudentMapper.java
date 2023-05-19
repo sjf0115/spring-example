@@ -19,4 +19,6 @@ public interface StudentMapper {
     Student selectById(@Param("stu_id") int id);
     // 插入
     void addStudent(Student stu);
+    // 批量插入
+    void addStudents(List<Student> students);
 }
