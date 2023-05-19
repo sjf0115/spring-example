@@ -21,4 +21,6 @@ public interface StudentMapper {
     void addStudent(Student stu);
     // 批量插入
     void addStudents(List<Student> students);
+    // 更新
+    int updateStudent(Student stu);
 }

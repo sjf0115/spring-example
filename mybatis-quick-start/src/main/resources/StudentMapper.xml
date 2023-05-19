@@ -46,4 +46,30 @@
         </foreach>
     </insert>
 
+    <!-- 3. 更新 -->
+
+    <!-- 更新全部字段 -->
+    <!--    update tb_student set-->
+    <!--    stu_id = #{stuId},-->
+    <!--    stu_name = #{stuName},-->
+    <!--    status = #{status}-->
+    <!--    where id = #{id}-->
+
+    <!-- 通过 set 和 if 元素实现动态更新字段 -->
+    <update id="updateStudent" parameterType="com.mybatis.example.pojo.Student">
+        update tb_student
+        <set>
+            <if test="stuId != null">
+                stu_id = #{stuId},
+            </if>
+            <if test="stuName != null and stuName != ''">
+                stu_name = #{stuName},
+            </if>
+            <if test="status != null">
+                status = #{status}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
 </mapper>

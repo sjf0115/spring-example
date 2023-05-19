@@ -9,27 +9,27 @@ package com.mybatis.example.pojo;
  */
 public class Student {
     // 自增ID
-    private int id;
+    private Integer id;
     // 编码
-    private int stuId;
+    private Integer stuId;
     // 姓名
     private String stuName;
     // 状态
-    private int status;
+    private Integer status;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getStuId() {
+    public Integer getStuId() {
         return stuId;
     }
 
-    public void setStuId(int stuId) {
+    public void setStuId(Integer stuId) {
         this.stuId = stuId;
     }
 
@@ -41,11 +41,11 @@ public class Student {
         this.stuName = stuName;
     }
 
-    public int getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
