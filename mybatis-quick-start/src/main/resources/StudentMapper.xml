@@ -30,6 +30,12 @@
         select * from tb_student where stu_id = #{stu_id};
     </select>
 
+    <select id="selectByName" parameterType = "String" resultType="com.mybatis.example.pojo.Student">
+        select id, stu_id AS stuId, stu_name AS stuName, status
+        from tb_student
+        where stu_name = #{stu_name};
+    </select>
+
     <!-- 2. 插入 -->
 
     <!-- 2.1 单个插入 -->

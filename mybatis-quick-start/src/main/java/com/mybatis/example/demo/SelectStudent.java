@@ -38,6 +38,12 @@ public class SelectStudent {
         Student student = mapper.selectById(10001);
         System.out.println("目标学生: " + student);
 
+        // 根据指定的名称查询学生
+        List<Student> targetStudents = mapper.selectByName("哈兰德");
+        for (Student stu : targetStudents) {
+            System.out.println("目标学生: " + stu);
+        }
+
         // 释放资源
         session.close();
     }
