@@ -12,6 +12,7 @@
         <module>spring-boot-hello</module>
         <module>lombok-example</module>
         <module>mybatis-quick-start</module>
+        <module>spring-mvc-quick-start</module>
     </modules>
 
     <properties>
@@ -24,10 +25,27 @@
         <junit.version>4.12</junit.version>
         <slf4j.version>1.7.20</slf4j.version>
         <logback.version>1.2.3</logback.version>
+        <servlet.version>6.0.0</servlet.version>
+        <spring.mvc.version>6.0.3</spring.mvc.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <!--  Spring MVC -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${spring.mvc.version}</version>
+            </dependency>
+
+            <!-- Servlet -->
+            <dependency>
+                <groupId>jakarta.servlet</groupId>
+                <artifactId>jakarta.servlet-api</artifactId>
+                <version>${servlet.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
             <!-- Lombok -->
             <dependency>
                 <groupId>org.projectlombok</groupId>
