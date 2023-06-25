@@ -25,8 +25,8 @@
         <junit.version>4.12</junit.version>
         <slf4j.version>1.7.20</slf4j.version>
         <logback.version>1.2.3</logback.version>
-        <servlet.version>6.0.0</servlet.version>
-        <spring.mvc.version>6.0.3</spring.mvc.version>
+        <servlet.version>4.0.1</servlet.version>
+        <spring.mvc.version>5.2.20.RELEASE</spring.mvc.version>
     </properties>
 
     <dependencyManagement>
@@ -40,10 +40,9 @@
 
             <!-- Servlet -->
             <dependency>
-                <groupId>jakarta.servlet</groupId>
-                <artifactId>jakarta.servlet-api</artifactId>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
                 <version>${servlet.version}</version>
-                <scope>provided</scope>
             </dependency>
 
             <!-- Lombok -->
