@@ -25,8 +25,9 @@
         <junit.version>4.12</junit.version>
         <slf4j.version>1.7.20</slf4j.version>
         <logback.version>1.2.3</logback.version>
-        <servlet.version>4.0.1</servlet.version>
-        <spring.mvc.version>5.2.20.RELEASE</spring.mvc.version>
+        <servlet.version>3.1.0</servlet.version>
+        <spring.mvc.version>5.2.10.RELEASE</spring.mvc.version>
+        <tomcat.plugin.version>2.1</tomcat.plugin.version>
     </properties>
 
     <dependencyManagement>
@@ -43,6 +44,7 @@
                 <groupId>javax.servlet</groupId>
                 <artifactId>javax.servlet-api</artifactId>
                 <version>${servlet.version}</version>
+                <scope>provided</scope>
             </dependency>
 
             <!-- Lombok -->
@@ -102,4 +104,22 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.tomcat.maven</groupId>
+                    <artifactId>tomcat6-maven-plugin</artifactId>
+                    <version>${tomcat.plugin.version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.tomcat.maven</groupId>
+                    <artifactId>tomcat7-maven-plugin</artifactId>
+                    <version>${tomcat.plugin.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>
