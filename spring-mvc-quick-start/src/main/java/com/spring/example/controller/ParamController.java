@@ -83,6 +83,22 @@ public class ParamController {
         return "{'type': 'List参数传递', 'likes': '" + likes + "'}";
     }
 
+    // Json POJO 参数传递
+    @RequestMapping(value = "/jsonPojoParam", produces = "text/html;charset=UTF-8")
+    @ResponseBody
+    public String jsonPojoParam(@RequestBody User user) {
+        System.out.println(user);
+        return "{'type': 'Json POJO 参数传递', 'User': '" + user + "'}";
+    }
+
+    // Json POJO List 参数传递
+    @RequestMapping(value = "/jsonPojoListParam", produces = "text/html;charset=UTF-8")
+    @ResponseBody
+    public String jsonPojoListParam(@RequestBody List<User> users) {
+        System.out.println(users);
+        return "{'type': 'Json POJO List 参数传递', 'User': '" + users + "'}";
+    }
+
     // 日期类型参数传递
     // 默认格式 yyyy/MM/dd
     // 通过 pattern 属性修改格式
