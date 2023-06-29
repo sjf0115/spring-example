@@ -28,7 +28,7 @@
         <servlet.version>3.1.0</servlet.version>
         <spring.mvc.version>5.2.10.RELEASE</spring.mvc.version>
         <tomcat.plugin.version>2.2</tomcat.plugin.version>
-        <jackson.version>2.13.5</jackson.version>
+        <jackson.version>2.9.8</jackson.version>
         <tomcat.version>8.5.90</tomcat.version>
     </properties>
 
@@ -83,7 +83,6 @@
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-databind</artifactId>
                 <version>${jackson.version}</version>
-                <scope>provided</scope>
             </dependency>
 
             <!-- Junit  -->
