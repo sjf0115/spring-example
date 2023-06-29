@@ -2,6 +2,7 @@ package com.spring.example.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 /**
  * 功能：SpringMvc 配置类
@@ -12,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @ComponentScan("com.spring.example.controller")
+@EnableWebMvc
 public class SpringMvcConfig {
 
 }

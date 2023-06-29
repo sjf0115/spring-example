@@ -2,12 +2,15 @@ package com.spring.example.controller;
 
 import com.spring.example.bean.Address;
 import com.spring.example.bean.User;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -67,8 +70,28 @@ public class ParamController {
     // List参数传递
     @RequestMapping(value = "/listParam", produces = "text/html;charset=UTF-8")
     @ResponseBody
-    public String arrayParam(@RequestParam List<String> likes) {
+    public String listParam(@RequestParam List<String> likes) {
         System.out.println(likes);
         return "{'type': 'List参数传递', 'likes': '" + likes + "'}";
+    }
+
+    // Json List参数传递
+    @RequestMapping(value = "/jsonListParam", produces = "text/html;charset=UTF-8")
+    @ResponseBody
+    public String jsonListParam(@RequestBody List<String> likes) {
+        System.out.println(likes);
+        return "{'type': 'List参数传递', 'likes': '" + likes + "'}";
+    }
+
+    // 日期类型参数传递
+    // 默认格式 yyyy/MM/dd
+    // 通过 pattern 属性修改格式
+    @RequestMapping(value = "/dateParam", produces = "text/html;charset=UTF-8")
+    @ResponseBody
+    public String dateParam(Date defaultDate,
+                            @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date patternDate) {
+        System.out.println(defaultDate);
+        System.out.println(patternDate);
+        return "{'type': '日期类型参数传递', 'defaultDate': '" + defaultDate + "'}";
     }
 }
