@@ -47,11 +47,11 @@ public class Response<T> {
         this.code = code;
     }
 
-    public static <T> Response<T> success(T data) {
+    public static <T> Response<T> success(T data, ResponseCode code) {
         Response<T> response = new Response<>();
         response.setData(data);
-        response.setCode(ResponseCode.SUCCESS.getCode());
-        response.setMsg(ResponseCode.SUCCESS.getMsg());
+        response.setCode(code.getCode());
+        response.setMsg(code.getMsg());
         return response;
     }
 
