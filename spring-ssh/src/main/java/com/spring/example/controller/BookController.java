@@ -31,7 +31,7 @@ public class BookController {
     @DeleteMapping("/{id}")
     public Response delete(@PathVariable Integer id) {
         boolean isSuccess = bookService.delete(id);
-        return Response.of(isSuccess, isSuccess ? ResponseCode.UPDATE_SUCCESS : ResponseCode.UPDATE_ERROR);
+        return Response.of(isSuccess, isSuccess ? ResponseCode.DELETE_SUCCESS : ResponseCode.DELETE_ERROR);
     }
 
     @GetMapping("/{id}")
