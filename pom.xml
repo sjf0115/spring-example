@@ -15,6 +15,7 @@
         <module>spring-mvc-quick-start</module>
         <module>spring-ssh</module>
         <module>spring-ssh</module>
+        <module>spring-quick-start</module>
     </modules>
 
     <properties>
