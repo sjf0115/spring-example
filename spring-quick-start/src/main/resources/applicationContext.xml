@@ -3,7 +3,32 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+
+    <bean id="book" class="com.spring.example.domain.Book">
+        <constructor-arg value="1"/>
+        <constructor-arg value="计算机理论"/>
+        <constructor-arg value="深入理解 Mybatis"/>
+    </bean>
+
+    <bean id="book-name" class="com.spring.example.domain.Book">
+        <constructor-arg name="id" value="1"/>
+        <constructor-arg name="name" value="深入理解 Mybatis"/>
+    </bean>
+
+    <bean id="book-type" class="com.spring.example.domain.Book">
+        <constructor-arg type="java.lang.Integer" value="1"/>
+        <constructor-arg type="java.lang.String" value="深入理解 Mybatis"/>
+    </bean>
+
+    <bean id="book-index" class="com.spring.example.domain.Book">
+        <constructor-arg index="0" value="1"/>
+        <constructor-arg index="1" value="深入理解 Mybatis"/>
+    </bean>
+
     <!-- 配置 Bean -->
     <bean id="bookDao" class="com.spring.example.dao.impl.BookDaoImpl"/>
-    <bean id="bookService" class="com.spring.example.service.impl.BookServiceImpl"/>
+    <bean id="bookService" class="com.spring.example.service.impl.BookServiceImpl">
+        <!-- 配置当前 bean 的属性 name 属性表示配置 BookService 中的哪个属性 ref 属性表示配置依赖哪个 Bean -->
+        <property name="bookDao" ref="bookDao"></property>
+    </bean>
 </beans>

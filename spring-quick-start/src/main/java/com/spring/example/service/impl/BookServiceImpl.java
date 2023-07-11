@@ -1,7 +1,6 @@
 package com.spring.example.service.impl;
 
 import com.spring.example.dao.BookDao;
-import com.spring.example.dao.impl.BookDaoImpl;
 import com.spring.example.service.BookService;
 
 /**
@@ -13,11 +12,19 @@ import com.spring.example.service.BookService;
  */
 public class BookServiceImpl implements BookService {
 
-    private BookDao bookDao = new BookDaoImpl();
+    // 删除业务层中使用 new 方式创建的属性
+    // private BookDao bookDao = new BookDaoImpl();
+
+    private BookDao bookDao;
 
     @Override
     public void save() {
         System.out.println("bookService save ....");
         bookDao.save();
+    }
+
+    // 通过 setter 方法实现依赖注入
+    public void setBookDao(BookDao bookDao) {
+        this.bookDao = bookDao;
     }
 }
