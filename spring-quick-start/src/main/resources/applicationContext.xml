@@ -10,19 +10,31 @@
         <constructor-arg value="深入理解 Mybatis"/>
     </bean>
 
-    <bean id="book-name" class="com.spring.example.domain.Book">
-        <constructor-arg name="id" value="1"/>
-        <constructor-arg name="name" value="深入理解 Mybatis"/>
-    </bean>
+<!--    <bean id="book-name" class="com.spring.example.domain.Book2">-->
+<!--        <constructor-arg name="id" value="1"/>-->
+<!--        <constructor-arg name="name" value="深入理解 Mybatis"/>-->
+<!--    </bean>-->
 
-    <bean id="book-type" class="com.spring.example.domain.Book">
-        <constructor-arg type="java.lang.Integer" value="1"/>
-        <constructor-arg type="java.lang.String" value="深入理解 Mybatis"/>
-    </bean>
+<!--    <bean id="book-type" class="com.spring.example.domain.Book2">-->
+<!--        <constructor-arg type="java.lang.Integer" value="1"/>-->
+<!--        <constructor-arg type="java.lang.String" value="深入理解 Mybatis"/>-->
+<!--    </bean>-->
 
-    <bean id="book-index" class="com.spring.example.domain.Book">
-        <constructor-arg index="0" value="1"/>
-        <constructor-arg index="1" value="深入理解 Mybatis"/>
+<!--    &lt;!&ndash; 错误示例 &ndash;&gt;-->
+<!--    <bean id="book-3-type" class="com.spring.example.domain.Book3">-->
+<!--        <constructor-arg type="java.lang.String" value="深入理解 Mybatis"/>-->
+<!--        <constructor-arg type="java.lang.Integer" value="1"/>-->
+<!--    </bean>-->
+
+<!--    <bean id="book-index" class="com.spring.example.domain.Book3">-->
+<!--        <constructor-arg index="1" value="深入理解 Mybatis"/>-->
+<!--        <constructor-arg index="0" value="1"/>-->
+<!--    </bean>-->
+
+    <bean id="student" class="com.spring.example.domain.Student">
+        <constructor-arg value="10001"/>
+        <constructor-arg value="Lucy"/>
+        <constructor-arg ref="book"/>
     </bean>
 
     <!-- 配置 Bean -->
