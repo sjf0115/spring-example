@@ -12,7 +12,11 @@ public class Student {
     private String name;
     private Book book;
 
+    public Student() {
+    }
+
     public Student(int id, String name, Book book) {
+        System.out.println("调用 Student(int id, String name, Book book)");
         this.id = id;
         this.name = name;
         this.book = book;

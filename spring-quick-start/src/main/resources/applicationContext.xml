@@ -43,4 +43,17 @@
         <!-- 配置当前 bean 的属性 name 属性表示配置 BookService 中的哪个属性 ref 属性表示配置依赖哪个 Bean -->
         <property name="bookDao" ref="bookDao"></property>
     </bean>
+
+    <!-- setter 注入-->
+    <bean id="book-setter" class="com.spring.example.domain.Book">
+        <property name="id" value="1"/>
+        <property name="type" value="计算机理论"/>
+        <property name="name" value="深入理解 Mybatis"/>
+    </bean>
+
+    <bean id="student-setter" class="com.spring.example.domain.Student">
+        <property name="id" value="10001"/>
+        <property name="name" value="Lucy"/>
+        <property name="book" ref="book-setter"/>
+    </bean>
 </beans>
