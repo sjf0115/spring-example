@@ -22,11 +22,17 @@ public class Student {
         this.book = book;
     }
 
+    public Student(Book book) {
+        System.out.println("调用 Student(Book book)");
+        this.book = book;
+    }
+
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
+        System.out.println("调用 Student#setId(int id)");
         this.id = id;
     }
 
@@ -35,6 +41,7 @@ public class Student {
     }
 
     public void setName(String name) {
+        System.out.println("调用 Student#setName(String name)");
         this.name = name;
     }
 
@@ -43,6 +50,7 @@ public class Student {
     }
 
     public void setBook(Book book) {
+        System.out.println("调用 Student#setBook(Book book)");
         this.book = book;
     }
 

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--  取消 Bean 候选资格  -->
+    <bean id="mybatis-book" class="com.spring.example.domain.Book" autowire-candidate="false">
+        <property name="id" value="1"/>
+        <property name="type" value="计算机理论"/>
+        <property name="name" value="深入理解 Mybatis"/>
+    </bean>
+
+    <!--  取消 Bean 候选资格  -->
+    <bean id="springboot-book" class="com.spring.example.domain.Book" autowire-candidate="false">
+        <property name="id" value="1"/>
+        <property name="type" value="计算机理论"/>
+        <property name="name" value="深入理解 SpringBoot"/>
+    </bean>
+
+    <!--  首先 Bean  -->
+    <bean id="spring-book" class="com.spring.example.domain.Book">
+        <property name="id" value="1"/>
+        <property name="type" value="计算机理论"/>
+        <property name="name" value="深入理解 Spring"/>
+    </bean>
+
+    <!--  简单类型通过 setter 手动装配  -->
+    <!--  引用类型通过 setter 自动装配  -->
+    <bean id="student" class="com.spring.example.domain.Student" autowire="byType">
+        <property name="id" value="10001"/>
+        <property name="name" value="Lucy"/>
+    </bean>
+</beans>

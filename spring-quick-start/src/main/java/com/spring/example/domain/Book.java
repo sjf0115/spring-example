@@ -9,7 +9,7 @@ public class Book {
     }
 
     public Book(Integer id, String type, String name) {
-        System.out.println("调用 Book(Integer id, String type, String name)");
+        System.out.println("调用 Book#Book(Integer id, String type, String name)");
         this.id = id;
         this.type = type;
         this.name = name;
@@ -20,6 +20,7 @@ public class Book {
     }
 
     public void setId(Integer id) {
+        System.out.println("调用 Book#setId(Integer id)");
         this.id = id;
     }
 
@@ -28,6 +29,7 @@ public class Book {
     }
 
     public void setType(String type) {
+        System.out.println("调用 Book#setType(String type)");
         this.type = type;
     }
 
@@ -36,6 +38,7 @@ public class Book {
     }
 
     public void setName(String name) {
+        System.out.println("调用 Book#setName(String name)");
         this.name = name;
     }
 

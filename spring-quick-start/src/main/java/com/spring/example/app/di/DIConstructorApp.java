@@ -1,4 +1,4 @@
-package com.spring.example;
+package com.spring.example.app.di;
 
 import com.spring.example.domain.Book;
 import com.spring.example.domain.Book2;
