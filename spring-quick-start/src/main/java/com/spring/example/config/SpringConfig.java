@@ -2,6 +2,7 @@ package com.spring.example.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 /**
  * 功能：Spring 注解开发模式的配置类
@@ -12,5 +13,6 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @ComponentScan("com.spring.example")
+@PropertySource("prod.properties")
 public class SpringConfig {
 }

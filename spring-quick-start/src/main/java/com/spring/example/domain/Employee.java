@@ -1,5 +1,6 @@
 package com.spring.example.domain;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
@@ -11,36 +12,10 @@ import org.springframework.stereotype.Component;
  */
 @Component("employee")
 public class Employee {
+    @Value("${id}")
     private int id;
+    @Value("${name}")
     private String name;
-
-    public Employee() {
-        System.out.println("调用 Employee#Employee()");
-    }
-
-    public Employee(int id, String name) {
-        System.out.println("调用 Employee#Employee(int id, String name)");
-        this.id = id;
-        this.name = name;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        System.out.println("调用 Employee#setId(int id)");
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        System.out.println("调用 Employee#setName(String name)");
-        this.name = name;
-    }
 
     @Override
     public String toString() {
