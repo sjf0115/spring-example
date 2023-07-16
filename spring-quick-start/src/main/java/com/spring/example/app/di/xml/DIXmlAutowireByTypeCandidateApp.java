@@ -1,20 +1,20 @@
-package com.spring.example.app.di;
+package com.spring.example.app.di.xml;
 
 import com.spring.example.domain.Student;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
- * 功能：XML 自动装配 默认 no
+ * 功能：XML 自动装配 默认 ByType Candidate 属性
  * 作者：SmartSi
  * CSDN博客：https://smartsi.blog.csdn.net/
  * 公众号：大数据生态
  * 日期：2023/7/15 15:13
  */
-public class DIXmlAutowireByTypeApp {
+public class DIXmlAutowireByTypeCandidateApp {
     public static void main(String[] args) {
         // 加载配置文件得到上下文对象 即 容器对象
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("di/applicationContext-autowire-byType.xml");
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("di/applicationContext-autowire-byType-candidate.xml");
 
         // 引用类型
         Student student = (Student) ctx.getBean("student");

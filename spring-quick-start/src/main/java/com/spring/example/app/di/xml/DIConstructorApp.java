@@ -1,8 +1,5 @@
-package com.spring.example.app.di;
+package com.spring.example.app.di.xml;
 
-import com.spring.example.domain.Book;
-import com.spring.example.domain.Book2;
-import com.spring.example.domain.Book3;
 import com.spring.example.domain.Student;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
