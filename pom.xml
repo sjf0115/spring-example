@@ -16,6 +16,9 @@
         <module>spring-ssh</module>
         <module>spring-ssh</module>
         <module>spring-quick-start</module>
+        <module>spring-transaction</module>
+        <module>spring-mybatis</module>
+        <module>spring-jdbc</module>
     </modules>
 
     <properties>
@@ -30,7 +33,7 @@
         <slf4j.version>1.7.20</slf4j.version>
         <logback.version>1.2.3</logback.version>
         <servlet.version>3.1.0</servlet.version>
-        <spring.mvc.version>5.2.10.RELEASE</spring.mvc.version>
+        <spring.version>5.2.10.RELEASE</spring.version>
         <tomcat.plugin.version>2.2</tomcat.plugin.version>
         <jackson.version>2.9.8</jackson.version>
         <tomcat.version>8.5.90</tomcat.version>
@@ -43,19 +46,31 @@
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-webmvc</artifactId>
-                <version>${spring.mvc.version}</version>
+                <version>${spring.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-jdbc</artifactId>
-                <version>${spring.mvc.version}</version>
+                <version>${spring.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-test</artifactId>
-                <version>${spring.mvc.version}</version>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-tx</artifactId>
+                <version>${spring.version}</version>
             </dependency>
 
             <!-- Servlet -->
