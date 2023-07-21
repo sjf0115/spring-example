@@ -19,6 +19,7 @@
         <module>spring-transaction</module>
         <module>spring-mybatis</module>
         <module>spring-jdbc</module>
+        <module>mybatis-generator</module>
     </modules>
 
     <properties>
