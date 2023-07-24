@@ -14,22 +14,25 @@
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
+        <mybatis.generator.version>1.4.2</mybatis.generator.version>
     </properties>
+
+    <dependencies>
+        <!-- MySQL 驱动 -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
-                <version>1.4.2</version>
-                <executions>
-                    <execution>
-                        <id>Generate MyBatis Artifacts</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <version>${mybatis.generator.version}</version>
+
+                <!-- 插件配置 -->
                 <configuration>
                     <!-- 输出详细信息 -->
                     <verbose>true</verbose>
@@ -37,6 +40,8 @@
                     <overwrite>true</overwrite>
                     <!-- 定义配置文件 -->
                     <configurationFile>${basedir}/src/main/resources/generator-configuration.xml</configurationFile>
+                    <!-- 将当前pom的依赖项添加到生成器的类路径中 -->
+                    <includeCompileDependencies>true</includeCompileDependencies>
                 </configuration>
             </plugin>
         </plugins>
