@@ -19,6 +19,9 @@ public class JDBCTemplateUpdateExample {
         JdbcTemplate template = (JdbcTemplate) ctx.getBean("jdbcTemplate");
 
         // 执行 SQL
-        template.execute("Update tb_book SET name = ?");
+        String name = "深入理解 JdbcTemplate";
+        int id = 26;
+        int nums = template.update("Update tb_book SET name = ? WHERE id = ?", name, id);
+        System.out.println("成功更新" + nums + "条记录");
     }
 }
