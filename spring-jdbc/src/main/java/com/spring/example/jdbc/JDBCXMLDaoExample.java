@@ -17,7 +17,7 @@ import java.util.List;
 public class JDBCXMLDaoExample {
     public static void main(String[] args) {
         // 加载配置文件得到上下文对象 即 容器对象
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext-dao.xml");
         // 获取 BookDao JDBCTemplate 通过 XML 注入
         BookDao bookDao = (BookDao) ctx.getBean("bookDao");
         // 查询多个

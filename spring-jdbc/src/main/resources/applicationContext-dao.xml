@@ -13,7 +13,6 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-
     <!--  配置 Book 持久层 支持 JDBCSupport -->
     <bean id="bookDao" class="com.spring.example.dao.impl.BookDaoSupportImpl">
         <property name="dataSource" ref="dataSource"/>
@@ -26,7 +25,4 @@
         <property name="username" value="root"/>
         <property name="password" value="root"/>
     </bean>
-
-
-
 </beans>

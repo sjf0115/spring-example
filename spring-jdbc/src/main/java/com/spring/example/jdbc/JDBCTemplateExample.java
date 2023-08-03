@@ -14,7 +14,7 @@ public class JDBCTemplateExample {
     public static void main(String[] args) {
         // 创建数据源 Spring 内置的数据源
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setUrl("jdbc:mysql://localhost:3306/test?useSSL=false&amp;characterEncoding=utf8");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/test?useSSL=false&characterEncoding=utf8");
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
         dataSource.setUsername("root");
         dataSource.setPassword("root");
@@ -24,6 +24,6 @@ public class JDBCTemplateExample {
         template.setDataSource(dataSource);
 
         // 执行 SQL
-        template.execute("INSERT INTO tb_book (type, name, description) VALUES('计算机理论', '深入理解 MyBatis', '好书')");
+        template.update("INSERT INTO tb_book (type, name, description) VALUES('计算机理论', '深入理解 MyBatis', '好书')");
     }
 }
