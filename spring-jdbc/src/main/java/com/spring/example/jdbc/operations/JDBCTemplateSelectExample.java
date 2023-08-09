@@ -3,12 +3,16 @@ package com.spring.example.jdbc.operations;
 import com.spring.example.domain.Book;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.ResultSetExtractor;
+import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -21,13 +25,65 @@ import java.util.Map;
  */
 public class JDBCTemplateSelectExample {
 
-    // 多行多列
-    public static void query(JdbcTemplate template) {
+    // 多行多列 借助 RowMapper 返回 JavaBean 对象
+    public static void queryRowMapper(JdbcTemplate template) {
         String sql = "SELECT id, type, name, description FROM tb_book WHERE id > ?";
-        template.query(sql);
+        List<Book> books = template.query(sql, new RowMapper<Book>() {
+            @Override
+            public Book mapRow(ResultSet rs, int rowNum) throws SQLException {
+                Book b = new Book();
+                b.setId(rs.getInt(1));
+                b.setType(rs.getString(2));
+                b.setName(rs.getString(3));
+                b.setDescription(rs.getString(4));
+                return b;
+            }
+        }, 10);
+        for (Book book : books) {
+            System.out.println(book);
+        }
     }
 
+    // 多行多列 借助 ResultSetExtractor 返回 JavaBean 对象
+    public static void queryResultSetExtractor(JdbcTemplate template) {
+        String sql = "SELECT id, type, name, description FROM tb_book WHERE id > ?";
+        List<Book> books = template.query(sql, new ResultSetExtractor<List<Book>>() {
+            @Override
+            public List<Book> extractData(ResultSet rs) throws SQLException, DataAccessException {
+                List<Book> books = new ArrayList<>();
+                while (rs.next()) {
+                    Book b = new Book();
+                    b.setId(rs.getInt(1));
+                    b.setType(rs.getString(2));
+                    b.setName(rs.getString(3));
+                    b.setDescription(rs.getString(4));
+                    books.add(b);
+                }
+                return books;
+            }
+        }, 10);
+        for (Book book : books) {
+            System.out.println(book);
+        }
+    }
 
+    // 多行多列 借助 RowCallbackHandler 输出 JavaBean 对象
+    public static void queryRowCallbackHandler(JdbcTemplate template) {
+        String sql = "SELECT id, type, name, description FROM tb_book WHERE id > ?";
+        template.query(sql, new RowCallbackHandler() {
+            @Override
+            public void processRow(ResultSet rs) throws SQLException {
+                while (rs.next()) {
+                    Book book = new Book();
+                    book.setId(rs.getInt(1));
+                    book.setType(rs.getString(2));
+                    book.setName(rs.getString(3));
+                    book.setDescription(rs.getString(4));
+                    System.out.println(book);
+                }
+            }
+        },10);
+    }
 
     // 单行单列 返回单值对象
     public static void queryForObject(JdbcTemplate template) {
@@ -62,7 +118,7 @@ public class JDBCTemplateSelectExample {
 
     // 多行单列 返回单值Map对象
     public static void queryForMap(JdbcTemplate template) {
-        String sql = "SELECT name FROM tb_book WHERE id > ?";
+        String sql = "SELECT id, name, type FROM tb_book WHERE id = ?";
         Map<String, Object> map = template.queryForMap(sql, 30);
         for (String k : map.keySet()) {
             System.out.println(k + ":" + map.get(k));
@@ -87,17 +143,20 @@ public class JDBCTemplateSelectExample {
         // 获取 JDBCTemplate 数据源是通过 XML 注入
         JdbcTemplate template = (JdbcTemplate) ctx.getBean("jdbcTemplate");
 
-        // 1. 单行单列
         // queryForObject(template);
 
-        queryForObjectRowMapper(template);
+        // queryForObjectRowMapper(template);
 
-
-        // 2. 多行单列
         // queryForList(template);
 
-        // queryForMap(template);
+        queryForMap(template);
 
         // queryForRowSet(template);
+
+        // queryRowMapper(template);
+
+        // queryResultSetExtractor(template);
+
+        // queryRowCallbackHandler(template);
     }
 }
