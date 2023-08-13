@@ -20,6 +20,7 @@
         <module>spring-mybatis</module>
         <module>spring-jdbc</module>
         <module>mybatis-generator</module>
+        <module>spring-datasource</module>
     </modules>
 
     <properties>
@@ -38,7 +39,7 @@
         <tomcat.plugin.version>2.2</tomcat.plugin.version>
         <jackson.version>2.9.8</jackson.version>
         <tomcat.version>8.5.90</tomcat.version>
-        <druid.version>1.1.16</druid.version>
+        <druid.version>1.2.15</druid.version>
     </properties>
 
     <dependencyManagement>
