@@ -14,13 +14,14 @@
         <module>mybatis-quick-start</module>
         <module>spring-mvc-quick-start</module>
         <module>spring-ssh</module>
-        <module>spring-ssh</module>
         <module>spring-quick-start</module>
         <module>spring-transaction</module>
         <module>spring-mybatis</module>
         <module>spring-jdbc</module>
         <module>mybatis-generator</module>
         <module>spring-datasource</module>
+        <module>mybatis-plus-intro</module>
+        <module>spring-boot-clickhouse</module>
     </modules>
 
     <properties>
@@ -168,6 +169,16 @@
                     <groupId>org.apache.tomcat.maven</groupId>
                     <artifactId>tomcat7-maven-plugin</artifactId>
                     <version>${tomcat.plugin.version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.3</version>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
