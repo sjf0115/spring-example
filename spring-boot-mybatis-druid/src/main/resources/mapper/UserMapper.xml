@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace 命名空间 -->
+<mapper namespace="com.spring.example.mapper.UserMapper">
+
+    <!-- type="User" 需要与配置文件 type-aliases-package 参数配合-->
+    <resultMap id="BaseResultMap" type="com.spring.example.bean.User">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="age" jdbcType="INTEGER" property="age" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, name, age
+    </sql>
+
+    <!-- 查询所有的用户 -->
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM tb_user
+    </select>
+
+    <!-- 根据指定的 Id 查询用户 -->
+    <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM tb_user
+        WHERE id = #{id}
+    </select>
+</mapper>
