@@ -9,19 +9,24 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>spring-boot-hello</module>
+
         <module>lombok-example</module>
-        <module>mybatis-quick-start</module>
-        <module>spring-mvc-quick-start</module>
-        <module>spring-ssh</module>
+
         <module>spring-quick-start</module>
-        <module>spring-transaction</module>
-        <module>spring-mybatis</module>
+        <module>spring-ssh</module>
         <module>spring-jdbc</module>
-        <module>mybatis-generator</module>
         <module>spring-datasource</module>
-        <module>mybatis-plus-intro</module>
+        <module>spring-transaction</module>
+
+        <module>spring-mvc-quick-start</module>
+
+        <module>spring-boot-hello</module>
+        <module>spring-boot-mybatis</module>
         <module>spring-boot-clickhouse</module>
+
+        <module>mybatis-generator</module>
+        <module>mybatis-quick-start</module>
+        <module>mybatis-plus-intro</module>
     </modules>
 
     <properties>

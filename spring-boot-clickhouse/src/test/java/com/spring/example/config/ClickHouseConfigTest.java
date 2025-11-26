@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 
@@ -20,11 +21,14 @@ import java.util.Map;
 @SpringBootTest
 @Slf4j
 public class ClickHouseConfigTest {
+    @Resource
+    private ClickHouseConfig config;
+
     @Test
     public void exeSql() {
         log.info("===========测试开始============");
         String sql="select id, name, age from user";
-        List<Map<String,String>> result= ClickHouseConfig.exeSql(sql);
+        List<Map<String,String>> result= config.exeSql(sql);
         log.info("===========查询技术============");
         log.info("clickhouse查询结果为：{}",result);
     }

@@ -12,7 +12,7 @@ import java.io.InputStream;
 import java.util.List;
 
 /**
- * 功能：入口 基于 Mapper 代理开发
+ * 功能：执行方式2：基于 Mapper 代理开发
  * 作者：SmartSi
  * CSDN博客：https://smartsi.blog.csdn.net/
  * 公众号：大数据生态

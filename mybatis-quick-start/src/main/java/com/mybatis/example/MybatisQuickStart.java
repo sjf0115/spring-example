@@ -11,7 +11,7 @@ import java.io.InputStream;
 import java.util.List;
 
 /**
- * 功能：入口
+ * 功能：执行方式1：指定 SQL 语句唯一标识 示例
  * 作者：SmartSi
  * CSDN博客：https://smartsi.blog.csdn.net/
  * 公众号：大数据生态
