@@ -18,45 +18,39 @@ import java.util.*;
 @Slf4j
 @Component
 public class ClickHouseConfig {
-    private static String clickhouseAddress;
+    private static String url;
+    private static String userName;
+    private static String password;
+    private static String dB;
 
-    private static String clickhouseUsername;
-
-    private static String clickhousePassword;
-
-    private static String clickhouseDB;
-
-    private static Integer clickhouseSocketTimeout;
-
-    @Value("${spring.datasource.clickhouse.address}")
+    @Value("${spring.datasource.url}")
     public  void setClickhouseAddress(String address) {
-        ClickHouseConfig.clickhouseAddress = address;
-    }
-    @Value("${spring.datasource.clickhouse.username}")
-    public  void setClickhouseUsername(String username) {
-        ClickHouseConfig.clickhouseUsername = username;
-    }
-    @Value("${spring.datasource.clickhouse.password}")
-    public  void setClickhousePassword(String password) {
-        ClickHouseConfig.clickhousePassword = password;
-    }
-    @Value("${spring.datasource.clickhouse.db}")
-    public  void setClickhouseDB(String db) {
-        ClickHouseConfig.clickhouseDB = db;
-    }
-    @Value("${spring.datasource.clickhouse.socketTimeout}")
-    public  void setClickhouseSocketTimeout(Integer socketTimeout) {
-        ClickHouseConfig.clickhouseSocketTimeout = socketTimeout;
+        ClickHouseConfig.url = address;
     }
 
-    public static Connection getConn() {
+    @Value("${spring.datasource.username}")
+    public  void setClickhouseUsername(String username) {
+        ClickHouseConfig.userName = username;
+    }
+
+    @Value("${spring.datasource.password}")
+    public  void setClickhousePassword(String password) {
+        ClickHouseConfig.password = password;
+    }
+
+    @Value("${spring.datasource.db}")
+    public  void setClickhouseDB(String db) {
+        ClickHouseConfig.dB = db;
+    }
+
+    // 获取 Connection
+    public Connection getConn() {
         Connection conn = null;
         Properties properties = new Properties();
-        properties.setProperty("user", clickhouseUsername);
-        properties.setProperty("password", clickhousePassword);
-        properties.setProperty("db", clickhouseDB);
+        properties.setProperty("user", userName);
+        properties.setProperty("password", password);
         try {
-            ClickHouseDataSource clickHouseDataSource = new ClickHouseDataSource(clickhouseAddress, properties);
+            ClickHouseDataSource clickHouseDataSource = new ClickHouseDataSource(url, properties);
             conn = clickHouseDataSource.getConnection();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -64,25 +58,30 @@ public class ClickHouseConfig {
         return conn;
     }
 
-    public static List<Map<String,String>> exeSql(String sql){
-        log.info("clickhouse 执行sql：" + sql);
+    /**
+     * 执行 SQL
+     * @param sql
+     * @return
+     */
+    public List<Map<String,String>> exeSql(String sql){
+        log.info("ClickHouseConfig 执行 sql：{}", sql);
+
+        List<Map<String,String>> result = new ArrayList<>();
         Connection connection = getConn();
         try {
             Statement statement = connection.createStatement();
-            ResultSet results = statement.executeQuery(sql);
-            ResultSetMetaData rsmd = results.getMetaData();
-            List<Map<String,String>> list = new ArrayList<>();
-            while(results.next()){
+            ResultSet rs = statement.executeQuery(sql);
+            ResultSetMetaData metaData = rs.getMetaData();
+            while(rs.next()) {
                 Map<String,String> row = new HashMap<>();
-                for(int i = 1;i<=rsmd.getColumnCount();i++){
-                    row.put(rsmd.getColumnName(i),results.getString(rsmd.getColumnName(i)));
+                for(int i = 1; i <= metaData.getColumnCount(); i++){
+                    row.put(metaData.getColumnName(i), rs.getString(metaData.getColumnName(i)));
                 }
-                list.add(row);
+                result.add(row);
             }
-            return list;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return result;
     }
 }

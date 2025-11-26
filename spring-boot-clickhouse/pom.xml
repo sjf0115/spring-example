@@ -42,6 +42,7 @@
             <groupId>com.clickhouse</groupId>
             <artifactId>clickhouse-jdbc</artifactId>
             <version>${clickhouse.version}</version>
+            <classifier>all</classifier>
         </dependency>
 
         <!-- 测试 -->

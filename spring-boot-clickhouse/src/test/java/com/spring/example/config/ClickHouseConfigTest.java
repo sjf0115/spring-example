@@ -23,7 +23,7 @@ public class ClickHouseConfigTest {
     @Test
     public void exeSql() {
         log.info("===========测试开始============");
-        String sql="select cluster,shard_num from clusters";
+        String sql="select id, name, age from user";
         List<Map<String,String>> result= ClickHouseConfig.exeSql(sql);
         log.info("===========查询技术============");
         log.info("clickhouse查询结果为：{}",result);

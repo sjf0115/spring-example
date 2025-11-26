@@ -3,11 +3,18 @@ server:
 
 spring:
   datasource:
-    clickhouse:
-      address: jdbc:ch://localhost:8123
-      username: default
-      password:
-      db: default
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.clickhouse.jdbc.ClickHouseDriver
+    url: jdbc:ch:http://localhost:8123/default
+    username: default
+    password:
+    db: default
+    hikari:
+      maximum-pool-size: 10          # 根据应用负载调整
+      minimum-idle: 2
+      connection-timeout: 30000      # 连接超时时间（毫秒）
+      idle-timeout: 600000
+      max-lifetime: 1800000
 
 
 
