@@ -28,6 +28,7 @@
         <module>mybatis-quick-start</module>
         <module>mybatis-plus-intro</module>
         <module>spring-boot-mybatis-druid</module>
+        <module>spring-boot-freemarker</module>
     </modules>
 
     <properties>
