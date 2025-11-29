@@ -58,6 +58,13 @@ public class UserDao {
         return jdbcTemplate.query(sql, new UserRowMapper());
     }
 
+    // 统计用户数量
+    public int count() {
+        String sql = "SELECT COUNT(*) FROM tb_user";
+        Integer result = jdbcTemplate.queryForObject(sql, Integer.class);
+        return result != null ? result : 0;
+    }
+
     // 自定义 RowMapper
     private static class UserRowMapper implements RowMapper<User> {
         @Override

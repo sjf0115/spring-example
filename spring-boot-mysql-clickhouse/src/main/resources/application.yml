@@ -1,0 +1,28 @@
+server:
+  port: 8090
+
+spring:
+  main:
+      allow-bean-definition-overriding: true
+  # 主数据源 用于 MySQL 业务数据库
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true
+    username: root
+    password: root
+
+  # 次数据源 用于 Clickhouse 数据分析
+  clickhouse:
+    driver-class-name: com.clickhouse.jdbc.ClickHouseDriver
+    url: jdbc:ch:http://localhost:8123/default
+    username: test
+    password: test
+
+mybatis:
+  # 指定 mapper.xml 文件路径
+  mapper-locations: classpath:mapper/*.xml
+  # 指定实体类包路径 xxxMapper.xml 不用指定全限定名
+  type-aliases-package: com.spring.example.bean
+  configuration:
+    # 开启驼峰命名转换
+    map-underscore-to-camel-case: true
