@@ -23,12 +23,13 @@
         <module>spring-boot-hello</module>
         <module>spring-boot-mybatis</module>
         <module>spring-boot-clickhouse</module>
+        <module>spring-boot-mybatis-druid</module>
+        <module>spring-boot-freemarker</module>
+        <module>spring-boot-jdbctemplate</module>
 
         <module>mybatis-generator</module>
         <module>mybatis-quick-start</module>
         <module>mybatis-plus-intro</module>
-        <module>spring-boot-mybatis-druid</module>
-        <module>spring-boot-freemarker</module>
     </modules>
 
     <properties>
