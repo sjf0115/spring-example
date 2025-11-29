@@ -4,12 +4,11 @@ import com.spring.example.bean.User;
 import com.spring.example.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * 功能：UserController 示例
@@ -19,7 +18,8 @@ import java.util.Optional;
  * 日期：2025/11/26 21:45
  */
 @Slf4j
-@RestController
+//@RestController  // 这会直接返回字符串，而不是渲染模板
+@Controller // 这会渲染模板
 @RequestMapping(value = "/user")
 public class UserController {
     @Autowired
@@ -29,19 +29,9 @@ public class UserController {
     public String getList(Model model) {
         List<User> users = userService.getList();
         model.addAttribute("users", users);
-        model.addAttribute("total", users.size());
+        model.addAttribute("size", users.size());
+        // 返回视图名称
+        // FreeMarker 会根据配置解析为 templates/users/list.ftl
         return "users/list";
-    }
-
-    @GetMapping(value = "/detail")
-    public String getDetail(@RequestParam Long id, Model model) {
-        Optional<User> userOptional = userService.getDetail(id);
-        if (userOptional.isPresent()) {
-            model.addAttribute("user", userOptional.get());
-            return "users/detail";
-        } else {
-            model.addAttribute("error", "用户不存在");
-            return "error/404";
-        }
     }
 }

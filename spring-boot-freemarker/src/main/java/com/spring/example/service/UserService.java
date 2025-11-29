@@ -1,15 +1,12 @@
 package com.spring.example.service;
 
 import com.spring.example.bean.User;
-import com.spring.example.mapper.UserMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * 功能：UserService 示例
@@ -37,15 +34,5 @@ public class UserService {
     public List<User> getList() {
         // 模拟所有用户数据
         return users;
-    }
-
-    /**
-     * 根据用户ID获取用户详细信息
-     * @param id
-     * @return
-     */
-    public Optional<User> getDetail(Long id) {
-        // 模拟根据用户ID获取用户
-        return users.stream().filter(user -> user.getId().equals(id)).findFirst();
     }
 }
