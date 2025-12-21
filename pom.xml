@@ -31,6 +31,7 @@
         <module>mybatis-quick-start</module>
         <module>mybatis-plus-intro</module>
         <module>spring-boot-mysql-clickhouse</module>
+        <module>spring-boot-file-upload</module>
     </modules>
 
     <properties>

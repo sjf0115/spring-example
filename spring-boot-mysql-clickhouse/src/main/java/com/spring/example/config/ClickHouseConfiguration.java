@@ -2,12 +2,12 @@ package com.spring.example.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.spring.example.bean.ClickHouseConfig;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
+
 
 /**
  * 功能：ClickHouseConfig
@@ -16,10 +16,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
  * 公众号：大数据生态
  * 日期：2025/11/29 20:30
  */
-@Slf4j
 @Configuration
 public class ClickHouseConfiguration {
-
     @Bean
     @ConfigurationProperties(prefix = "spring.clickhouse", ignoreUnknownFields = false)
     public ClickHouseConfig clickHouseConfig() {
@@ -36,4 +34,15 @@ public class ClickHouseConfiguration {
         druidDataSource.setDriverClassName(config.getDriverClassName());
         return new JdbcTemplate(druidDataSource);
     }
+
+    /*@Bean("clickHouseDataSource")
+    @ConfigurationProperties(prefix = "spring.clickhouse")
+    public DataSource clickHouseDataSource() {
+        return DataSourceBuilder.create().build();
+    }
+
+    @Bean("clickHouseJdbcTemplate")
+    public JdbcTemplate clickHouseJdbcTemplate(@Qualifier("clickHouseDataSource") DataSource dataSource) throws SQLException {
+        return new JdbcTemplate(dataSource);
+    }*/
 }
