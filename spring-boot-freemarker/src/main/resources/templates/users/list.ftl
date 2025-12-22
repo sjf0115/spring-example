@@ -21,16 +21,16 @@
             </tr>
         </thead>
         <tbody>
-            <#list users as user>
+            <#list orders as order>
                 <tr>
-                    <td>${user.id}</td>
-                    <td>${user.name}</td>
-                    <td>${user.age}</td>
+                    <td>${order.id}</td>
+                    <td>${order.name}</td>
+                    <td>${order.age}</td>
                 </tr>
             </#list>
         </tbody>
     </table>
 
-    <p>总用户数: ${users?size}</p>
+    <p>总用户数: ${orders?size}</p>
 </body>
 </html>

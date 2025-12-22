@@ -21,7 +21,7 @@
         <!--数据库链接URL，用户名、密码 -->
         <jdbcConnection driverClass="${jdbc.driverClass}"
                         connectionURL="${jdbc.jdbcUrl}"
-                        userId="${jdbc.user}"
+                        userId="${jdbc.order}"
                         password="${jdbc.password}">
         </jdbcConnection>
 

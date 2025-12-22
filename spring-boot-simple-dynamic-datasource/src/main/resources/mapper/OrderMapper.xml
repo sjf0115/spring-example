@@ -9,26 +9,25 @@
     <!-- type="User" 需要与配置文件 type-aliases-package 参数配合-->
     <resultMap id="BaseResultMap" type="com.spring.example.bean.Order">
         <id column="id" jdbcType="BIGINT" property="id" />
-        <result column="name" jdbcType="VARCHAR" property="name" />
-        <result column="age" jdbcType="INTEGER" property="age" />
+        <result column="name" jdbcType="DOUBLE" property="price" />
     </resultMap>
 
     <sql id="Base_Column_List">
-        id, name, age
+        id, price
     </sql>
 
-    <!-- 查询所有的用户 -->
+    <!-- 查询所有的订单 -->
     <select id="selectAll" resultMap="BaseResultMap">
         SELECT
         <include refid="Base_Column_List" />
-        FROM tb_user
+        FROM tb_order
     </select>
 
-    <!-- 根据指定的 Id 查询用户 -->
+    <!-- 根据指定的 Id 查询订单 -->
     <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
         SELECT
         <include refid="Base_Column_List" />
-        FROM tb_user
+        FROM tb_order
         WHERE id = #{id}
     </select>
 </mapper>

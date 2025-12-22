@@ -4,31 +4,29 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- namespace 命名空间 -->
-<mapper namespace="com.spring.example.mapper.OrderMapper">
+<mapper namespace="com.spring.example.mapper.GoodsMapper">
 
-    <!-- type="User" 需要与配置文件 type-aliases-package 参数配合-->
-    <resultMap id="BaseResultMap" type="com.spring.example.bean.Order">
+    <resultMap id="BaseResultMap" type="com.spring.example.bean.Goods">
         <id column="id" jdbcType="BIGINT" property="id" />
         <result column="name" jdbcType="VARCHAR" property="name" />
-        <result column="age" jdbcType="INTEGER" property="age" />
     </resultMap>
 
     <sql id="Base_Column_List">
-        id, name, age
+        id, name
     </sql>
 
-    <!-- 查询所有的用户 -->
+    <!-- 查询所有的商品 -->
     <select id="selectAll" resultMap="BaseResultMap">
         SELECT
         <include refid="Base_Column_List" />
-        FROM tb_user
+        FROM tb_goods
     </select>
 
-    <!-- 根据指定的 Id 查询用户 -->
+    <!-- 根据指定的 Id 查询商品 -->
     <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
         SELECT
         <include refid="Base_Column_List" />
-        FROM tb_user
+        FROM tb_goods
         WHERE id = #{id}
     </select>
 </mapper>
