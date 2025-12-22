@@ -1,6 +1,7 @@
 package com.spring.example.controller;
 
 import com.spring.example.bean.DynamicDataSource;
+import com.spring.example.bean.SimpleDynamicDataSource;
 import com.spring.example.bean.Order;
 import com.spring.example.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +28,7 @@ public class OrderController {
 
     @GetMapping(value = "/list")
     public List<Order> getList() {
+        // SimpleDynamicDataSource.name.set("order");
         DynamicDataSource.name.set("order");
         List<Order> orders = orderService.getList();
         return orders;
@@ -34,6 +36,7 @@ public class OrderController {
 
     @GetMapping(value = "/detail")
     public Order getDetail(@RequestParam Long id) {
+        // SimpleDynamicDataSource.name.set("order");
         DynamicDataSource.name.set("order");
         Optional<Order> userOptional = orderService.getDetail(id);
         return userOptional.orElse(null);

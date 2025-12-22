@@ -6,10 +6,9 @@
 <!-- namespace 命名空间 -->
 <mapper namespace="com.spring.example.mapper.OrderMapper">
 
-    <!-- type="User" 需要与配置文件 type-aliases-package 参数配合-->
     <resultMap id="BaseResultMap" type="com.spring.example.bean.Order">
         <id column="id" jdbcType="BIGINT" property="id" />
-        <result column="name" jdbcType="DOUBLE" property="price" />
+        <result column="price" jdbcType="DOUBLE" property="price" />
     </resultMap>
 
     <sql id="Base_Column_List">

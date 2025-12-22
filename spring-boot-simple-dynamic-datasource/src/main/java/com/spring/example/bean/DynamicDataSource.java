@@ -1,16 +1,13 @@
 package com.spring.example.bean;
 
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
+import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.SQLFeatureNotSupportedException;
-import java.util.logging.Logger;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 功能：动态数据源
@@ -21,7 +18,7 @@ import java.util.logging.Logger;
  */
 @Component
 @Primary // 设置为主要注入的 Bean 数据源
-public class DynamicDataSource implements DataSource, InitializingBean {
+public class DynamicDataSource extends AbstractRoutingDataSource {
     // 当前使用的数据源标识
     public static ThreadLocal<String> name = new ThreadLocal<>();
     // 订单数据源
@@ -31,65 +28,21 @@ public class DynamicDataSource implements DataSource, InitializingBean {
     @Autowired
     private DataSource goodsDataSource;
 
+    // 返回当前数据源标识
     @Override
-    public Connection getConnection() throws SQLException {
-        if (name.get().equals("order")) {
-            return orderDataSource.getConnection();
-        } else if (name.get().equals("goods")){
-            return goodsDataSource.getConnection();
-        }
-        throw new RuntimeException("非法数据源：" + name.get());
+    protected Object determineCurrentLookupKey() {
+        return name.get();
     }
 
     @Override
-    public void afterPropertiesSet() throws Exception {
-        // 初始化 默认数据源
-        name.set("order");
-    }
-
-    @Override
-    public Connection getConnection(String username, String password) throws SQLException {
-        // 暂时不需要
-        return null;
-    }
-
-    @Override
-    public <T> T unwrap(Class<T> iface) throws SQLException {
-        // 暂时不需要
-        return null;
-    }
-
-    @Override
-    public boolean isWrapperFor(Class<?> iface) throws SQLException {
-        // 暂时不需要
-        return false;
-    }
-
-    @Override
-    public PrintWriter getLogWriter() throws SQLException {
-        // 暂时不需要
-        return null;
-    }
-
-    @Override
-    public void setLogWriter(PrintWriter out) throws SQLException {
-        // 暂时不需要
-    }
-
-    @Override
-    public void setLoginTimeout(int seconds) throws SQLException {
-        // 暂时不需要
-    }
-
-    @Override
-    public int getLoginTimeout() throws SQLException {
-        // 暂时不需要
-        return 0;
-    }
-
-    @Override
-    public Logger getParentLogger() throws SQLFeatureNotSupportedException {
-        // 暂时不需要
-        return null;
+    public void afterPropertiesSet() {
+        // 为 targetDataSources 初始化所有数据源
+        Map<Object, Object> targetDataSources = new HashMap<>();
+        targetDataSources.put("order", orderDataSource);
+        targetDataSources.put("goods", goodsDataSource);
+        super.setTargetDataSources(targetDataSources);
+        // 默认数据源
+        super.setDefaultTargetDataSource(orderDataSource);
+        super.afterPropertiesSet();
     }
 }
