@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace 命名空间 -->
+<mapper namespace="com.spring.example.mapper.OrderMapper">
+
+    <resultMap id="BaseResultMap" type="com.spring.example.bean.Order">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="price" jdbcType="DOUBLE" property="price" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, price
+    </sql>
+
+    <!-- 查询所有的订单 -->
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM tb_order
+    </select>
+
+    <!-- 根据指定的 Id 查询订单 -->
+    <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM tb_order
+        WHERE id = #{id}
+    </select>
+</mapper>
