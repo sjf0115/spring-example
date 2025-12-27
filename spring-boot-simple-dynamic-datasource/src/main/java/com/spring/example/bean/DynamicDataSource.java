@@ -19,8 +19,6 @@ import java.util.Map;
 @Component
 @Primary // 设置为主要注入的 Bean 数据源
 public class DynamicDataSource extends AbstractRoutingDataSource {
-    // 当前使用的数据源标识
-    public static ThreadLocal<String> name = new ThreadLocal<>();
     // 订单数据源
     @Autowired
     private DataSource orderDataSource;
@@ -31,7 +29,7 @@ public class DynamicDataSource extends AbstractRoutingDataSource {
     // 返回当前数据源标识
     @Override
     protected Object determineCurrentLookupKey() {
-        return name.get();
+        return DataSourceContextHolder.getDataSource();
     }
 
     @Override

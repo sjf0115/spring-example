@@ -1,7 +1,7 @@
 package com.spring.example.controller;
 
+import com.spring.example.bean.DataSourceContextHolder;
 import com.spring.example.bean.DynamicDataSource;
-import com.spring.example.bean.SimpleDynamicDataSource;
 import com.spring.example.bean.Goods;
 import com.spring.example.service.GoodsService;
 import lombok.extern.slf4j.Slf4j;
@@ -31,15 +31,13 @@ public class GoodsController {
 
     @GetMapping(value = "/list")
     public List<Goods> getList() {
-        // SimpleDynamicDataSource.name.set("goods");
-        DynamicDataSource.name.set("goods");
+        DataSourceContextHolder.setDataSource("goods");
         return goodsService.getList();
     }
 
     @GetMapping(value = "/detail")
     public Goods getDetail(@RequestParam Long id) {
-        // SimpleDynamicDataSource.name.set("goods");
-        DynamicDataSource.name.set("goods");
+        DataSourceContextHolder.setDataSource("goods");
         Optional<Goods> goodsOptional = goodsService.getDetail(id);
         return goodsOptional.orElse(null);
     }

@@ -1,5 +1,6 @@
 package com.spring.example.controller;
 
+import com.spring.example.bean.DataSourceContextHolder;
 import com.spring.example.bean.DynamicDataSource;
 import com.spring.example.bean.SimpleDynamicDataSource;
 import com.spring.example.bean.Order;
@@ -28,16 +29,14 @@ public class OrderController {
 
     @GetMapping(value = "/list")
     public List<Order> getList() {
-        // SimpleDynamicDataSource.name.set("order");
-        DynamicDataSource.name.set("order");
+        DataSourceContextHolder.setDataSource("order");
         List<Order> orders = orderService.getList();
         return orders;
     }
 
     @GetMapping(value = "/detail")
     public Order getDetail(@RequestParam Long id) {
-        // SimpleDynamicDataSource.name.set("order");
-        DynamicDataSource.name.set("order");
+        DataSourceContextHolder.setDataSource("order");
         Optional<Order> userOptional = orderService.getDetail(id);
         return userOptional.orElse(null);
     }
