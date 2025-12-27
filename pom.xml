@@ -32,7 +32,8 @@
         <module>mybatis-plus-intro</module>
         <module>spring-boot-mysql-clickhouse</module>
         <module>spring-boot-file-upload</module>
-        <module>spring-boot-simple-dynamic-datasource</module>
+        <module>spring-boot-dynamic-datasource-simple</module>
+        <module>spring-boot-dynamic-datasource-aop</module>
     </modules>
 
     <properties>
