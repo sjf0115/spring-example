@@ -1,8 +1,7 @@
 package com.spring.example.controller;
 
 import com.spring.example.bean.DataSourceContextHolder;
-import com.spring.example.bean.DynamicDataSource;
-import com.spring.example.bean.SimpleDynamicDataSource;
+import com.spring.example.bean.DataSourceType;
 import com.spring.example.bean.Order;
 import com.spring.example.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
@@ -29,14 +28,14 @@ public class OrderController {
 
     @GetMapping(value = "/list")
     public List<Order> getList() {
-        DataSourceContextHolder.setDataSource("order");
+        DataSourceContextHolder.setDataSource(DataSourceType.ORDER);
         List<Order> orders = orderService.getList();
         return orders;
     }
 
     @GetMapping(value = "/detail")
     public Order getDetail(@RequestParam Long id) {
-        DataSourceContextHolder.setDataSource("order");
+        DataSourceContextHolder.setDataSource(DataSourceType.ORDER);
         Optional<Order> userOptional = orderService.getDetail(id);
         return userOptional.orElse(null);
     }

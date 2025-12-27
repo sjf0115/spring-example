@@ -8,22 +8,22 @@ package com.spring.example.bean;
  * 日期：2025/12/27 15:27
  */
 public class DataSourceContextHolder {
-    private static final ThreadLocal<String> DATASOURCE_HOLDER = new ThreadLocal<>();
+    private static final ThreadLocal<DataSourceType> DATASOURCE_HOLDER = new ThreadLocal<>();
 
     /**
      * 获取当前线程的数据源
      * @return
      */
-    public static String getDataSource() {
+    public static DataSourceType getDataSource() {
         return DATASOURCE_HOLDER.get();
     }
 
     /**
      * 设置数据源
-     * @param dataSourceName
+     * @param dataSourceType
      */
-    public static void setDataSource(String dataSourceName) {
-        DATASOURCE_HOLDER.set(dataSourceName);
+    public static void setDataSource(DataSourceType dataSourceType) {
+        DATASOURCE_HOLDER.set(dataSourceType);
     }
 
     /**

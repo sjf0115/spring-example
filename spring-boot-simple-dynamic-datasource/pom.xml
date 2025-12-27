@@ -35,12 +35,6 @@
             <version>${mybatis.spring.version}</version>
         </dependency>
 
-        <!-- 集成 Jdbc -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jdbc</artifactId>
-        </dependency>
-
         <!-- 集成 Druid -->
         <dependency>
             <groupId>com.alibaba</groupId>

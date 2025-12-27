@@ -36,8 +36,8 @@ public class DynamicDataSource extends AbstractRoutingDataSource {
     public void afterPropertiesSet() {
         // 为 targetDataSources 初始化所有数据源
         Map<Object, Object> targetDataSources = new HashMap<>();
-        targetDataSources.put("order", orderDataSource);
-        targetDataSources.put("goods", goodsDataSource);
+        targetDataSources.put(DataSourceType.ORDER, orderDataSource);
+        targetDataSources.put(DataSourceType.GOODS, goodsDataSource);
         super.setTargetDataSources(targetDataSources);
         // 默认数据源
         super.setDefaultTargetDataSource(orderDataSource);
