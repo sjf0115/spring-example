@@ -34,6 +34,7 @@
         <module>spring-boot-file-upload</module>
         <module>spring-boot-dynamic-datasource-simple</module>
         <module>spring-boot-dynamic-datasource-aop</module>
+        <module>spring-boot-dynamic-datasource-mybatis</module>
     </modules>
 
     <properties>
