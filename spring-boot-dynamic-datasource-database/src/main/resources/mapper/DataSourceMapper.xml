@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace 命名空间 -->
+<mapper namespace="com.spring.example.mapper.DataSourceMapper">
+
+    <resultMap id="BaseResultMap" type="com.spring.example.bean.ExportDataSource">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="datasource_id" jdbcType="VARCHAR" property="datasourceId" />
+        <result column="datasource_name" jdbcType="VARCHAR" property="datasourceName" />
+        <result column="datasource_desc" jdbcType="VARCHAR" property="datasourceDesc" />
+        <result column="config" jdbcType="LONGVARCHAR" property="config" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, datasource_id, datasource_name, datasource_desc, config
+    </sql>
+
+    <!-- 查询所有的数据源 -->
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM datasource
+    </select>
+
+    <!-- 根据指定的 Id 查询数据源 -->
+    <select id="selectById" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM datasource
+        WHERE datasource_id = #{id}
+    </select>
+</mapper>
